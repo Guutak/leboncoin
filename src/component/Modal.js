@@ -28,11 +28,11 @@ const Modal = props => {
 			);
 
 			if (response.data.token) {
-				console.log(response.data.token);
-				props.cookie(response.data.token);
+				// console.log("REDIRECT");
+				//console.log(response.data.token);
 				// Cookies.set("token", response.data.token);
+				props.onConnect(response.data.token);
 				history.push("/");
-				console.log("REDIRECT");
 			}
 		} catch (error) {
 			console.log("ERROR");

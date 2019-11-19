@@ -14,21 +14,14 @@ const App = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [user, setUser] = useState(token);
 
-	const cookie = token => {
+	const onConnect = token => {
 		Cookies.set("token", token);
+		setUser(token);
 	};
 
 	return (
 		<Router>
 			<>
-				{showModal && (
-					<Modal
-						showModal={showModal}
-						setShowModal={setShowModal}
-						cookie={cookie}
-					/>
-				)}
-
 				<Header
 					altImg="Logo Leboncoin"
 					offer="Déposer une annonce"
@@ -54,6 +47,14 @@ const App = () => {
 						<Offer />
 					</Route>
 				</Switch>
+				{showModal && (
+					<Modal
+						showModal={showModal}
+						setShowModal={setShowModal}
+						onConnect={onConnect}
+						user={user}
+					/>
+				)}
 			</>
 		</Router>
 	);

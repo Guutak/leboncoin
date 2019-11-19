@@ -4,9 +4,7 @@ import Logo from "../img/leboncoin-logo.png";
 import Cookies from "js-cookie";
 
 const Header = props => {
-	// let cookie = Cookies.get("token");
-	// console.log("ddfdggghhhh", cookie);
-	console.log("props de user is ", props.user);
+	// console.log("props de user is ", props.user);
 
 	return (
 		<header>
@@ -112,13 +110,12 @@ const Header = props => {
 						<h6>{props.messages}</h6>
 					</div>
 
-					{props && props.user ? (
+					{props.user ? (
 						<div
 							className="header-right-item"
 							onClick={() => {
-								console.log("LABIBIDIBOBIDIBOU");
-								props.setUser({});
 								Cookies.remove("token");
+								props.setUser();
 							}}
 						>
 							{console.log("LAMANCHIKABOU")}
@@ -142,7 +139,6 @@ const Header = props => {
 						<div
 							className="header-right-item"
 							onClick={() => {
-								console.log("SALAGADOU");
 								props.setShowModal(true);
 							}}
 						>
