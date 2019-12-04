@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Modal = props => {
 	const [email, setEmail] = useState("");
@@ -77,7 +76,15 @@ const Modal = props => {
 				<div className="new-account">
 					<h4>Vous n'avez pas de compte ?</h4>
 
-					<input type="submit" value="Créer un compte" />
+					<Link to={"/SignUp"}>
+						<input
+							type="submit"
+							value="Créer un compte"
+							onClick={() => {
+								props.setShowModal(false);
+							}}
+						/>
+					</Link>
 				</div>
 			</div>
 		</div>

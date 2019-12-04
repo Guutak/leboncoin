@@ -1,23 +1,26 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Cookies from "js-cookie";
+import React, { useState } from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Cookies from "js-cookie"
 
-import Header from "./component/Header";
-import Modal from "./component/Modal";
+import Header from "./component/Header"
+import Modal from "./component/Modal"
 
-import Offers from "./container/Offers";
-import Offer from "./container/Offer";
-import "./App.css";
+import Offers from "./container/Offers"
+import Offer from "./container/Offer"
+import Subscribe from "./container/Subscribe"
+import Publish from "./container/Publish"
+
+import "./App.css"
 
 const App = () => {
-	let token = Cookies.get("token");
-	const [showModal, setShowModal] = useState(false);
-	const [user, setUser] = useState(token);
+	let token = Cookies.get("token")
+	const [showModal, setShowModal] = useState(false)
+	const [user, setUser] = useState(token)
 
 	const onConnect = token => {
-		Cookies.set("token", token);
-		setUser(token);
-	};
+		Cookies.set("token", token)
+		setUser(token)
+	}
 
 	return (
 		<Router>
@@ -35,9 +38,6 @@ const App = () => {
 					user={user}
 				/>
 
-				{/* {console.log("token is ", token)}
-				{console.log("user is ", user)} */}
-
 				<Switch>
 					<Route exact path="/">
 						<Offers />
@@ -45,6 +45,14 @@ const App = () => {
 
 					<Route path="/Offer/:id">
 						<Offer />
+					</Route>
+
+					<Route path="/SignUp">
+						<Subscribe setUser={setUser} />
+					</Route>
+
+					<Route path="/Publish">
+						<Publish />
 					</Route>
 				</Switch>
 				{showModal && (
@@ -57,7 +65,7 @@ const App = () => {
 				)}
 			</>
 		</Router>
-	);
-};
+	)
+}
 
-export default App;
+export default App

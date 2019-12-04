@@ -1,38 +1,42 @@
-import React from "react";
-import Logo from "../img/leboncoin-logo.png";
+import React from "react"
+import Logo from "../img/leboncoin-logo.png"
+import { Link } from "react-router-dom"
 
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 
 const Header = props => {
-	// console.log("props de user is ", props.user);
-
 	return (
 		<header>
 			<nav className="header-content flex-item">
 				<div className="header-left-nav flex-item">
-					<img
-						className="header-logo header-item"
-						src={Logo}
-						alt={props.altImg}
-					/>
+					<Link to={"/"}>
+						<img
+							className="header-logo header-item"
+							src={Logo}
+							alt={props.altImg}
+						/>
+					</Link>
 
-					<a className="left-offer header-item" href="#">
-						<span>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								fill="#F56B29"
-								stroke="#FFF"
-								strokeWidth="2"
-								viewBox="0 0 24 24"
-							>
-								<path d="M3 3h18v18H3zm9 5v8m-4-4h8"></path>
-							</svg>
-						</span>
-						<span>{props.offer}</span>
-					</a>
-					<a className="left-search header-item flex-item" href="#">
+					<Link to={"/Publish"}>
+						<div className="left-offer header-item" href="#">
+							<span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									fill="#F56B29"
+									stroke="#FFF"
+									strokeWidth="2"
+									viewBox="0 0 24 24"
+								>
+									<path d="M3 3h18v18H3zm9 5v8m-4-4h8"></path>
+								</svg>
+							</span>
+							<span>{props.offer}</span>
+						</div>
+					</Link>
+
+					<div className="left-search header-item flex-item" href="#">
 						<div className="search flex-item">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +56,7 @@ const Header = props => {
 								<h4>{props.search}</h4>
 							</div>
 						</div>
-					</a>
+					</div>
 				</div>
 
 				<div className="header-right-nav flex-item">
@@ -114,11 +118,10 @@ const Header = props => {
 						<div
 							className="header-right-item"
 							onClick={() => {
-								Cookies.remove("token");
-								props.setUser();
+								Cookies.remove("token")
+								props.setUser()
 							}}
 						>
-							{console.log("LAMANCHIKABOU")}
 							<span>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +142,7 @@ const Header = props => {
 						<div
 							className="header-right-item"
 							onClick={() => {
-								props.setShowModal(true);
+								props.setShowModal(true)
 							}}
 						>
 							<span>
@@ -162,7 +165,7 @@ const Header = props => {
 				</div>
 			</nav>
 		</header>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header
