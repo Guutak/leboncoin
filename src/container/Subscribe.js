@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import { AccessTime, Notifications, RemoveRedEye } from "@material-ui/icons";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-import Cookies from "js-cookie";
-import { getThemeProps } from "@material-ui/styles";
+import React, { useState } from "react"
+import { AccessTime, Notifications, RemoveRedEye } from "@material-ui/icons"
+import axios from "axios"
+import { useHistory } from "react-router-dom"
+import Cookies from "js-cookie"
+import { getThemeProps } from "@material-ui/styles"
 
 const Subscribe = () => {
-	const history = useHistory();
+	const history = useHistory()
 
-	const [username, setUsername] = useState("");
-	const [mail, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-	const [cgv, setCGV] = useState(false);
-	//console.log("cgv is", cgv);
+	const [username, setUsername] = useState("")
+	const [mail, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+	const [confirmPassword, setConfirmPassword] = useState("")
+	const [cgv, setCGV] = useState(false)
 
-	let isEnabled = false;
+	let isEnabled = false
 
 	if (
 		username !== "" &&
@@ -24,10 +23,8 @@ const Subscribe = () => {
 		confirmPassword !== "" &&
 		cgv === true
 	) {
-		isEnabled = true;
+		isEnabled = true
 	}
-
-	//console.log(isEnabled);
 
 	const handleSignup = async () => {
 		if (isEnabled === true) {
@@ -38,14 +35,14 @@ const Subscribe = () => {
 					email: mail,
 					password: password
 				}
-			);
+			)
 
-			Cookies.set("token", response.data.token);
-			history.push("/");
+			Cookies.set("token", response.data.token)
+			history.push("/")
 		} else {
-			alert("Le formulaire n'est pas valide");
+			alert("Le formulaire n'est pas valide")
 		}
-	};
+	}
 
 	return (
 		<div className="sub-container">
@@ -95,7 +92,7 @@ const Subscribe = () => {
 
 					<form
 						onSubmit={async e => {
-							e.preventDefault();
+							e.preventDefault()
 						}}
 					>
 						<div className="form-sub form-pseudo">
@@ -103,7 +100,7 @@ const Subscribe = () => {
 							<input
 								type="text"
 								onChange={e => {
-									setUsername(e.target.value);
+									setUsername(e.target.value)
 								}}
 								required
 							/>
@@ -114,7 +111,7 @@ const Subscribe = () => {
 							<input
 								type="email"
 								onChange={e => {
-									setEmail(e.target.value);
+									setEmail(e.target.value)
 								}}
 								required
 							/>
@@ -126,7 +123,7 @@ const Subscribe = () => {
 								<input
 									type="password"
 									onChange={e => {
-										setPassword(e.target.value);
+										setPassword(e.target.value)
 									}}
 									required
 								/>
@@ -137,7 +134,7 @@ const Subscribe = () => {
 								<input
 									type="password"
 									onChange={e => {
-										setConfirmPassword(e.target.value);
+										setConfirmPassword(e.target.value)
 									}}
 									required
 								/>
@@ -150,7 +147,7 @@ const Subscribe = () => {
 								name="scales"
 								checked={cgv}
 								onChange={e => {
-									setCGV(e.target.checked);
+									setCGV(e.target.checked)
 								}}
 								required
 							/>
@@ -172,7 +169,7 @@ const Subscribe = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default Subscribe;
+export default Subscribe
